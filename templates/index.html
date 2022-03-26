@@ -1,0 +1,282 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Home page</title>
+</head>
+<style>
+    .scroll {
+        overflow-y: auto;
+    }
+
+    .scroll::-webkit-scrollbar-track {
+        border-radius: "10px";
+        width: "12px";
+    }
+
+    body::-webkit-scrollbar {
+        width: "1em";
+    }
+
+    .scroll::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .scroll::-webkit-scrollbar {
+        display: none;
+    }
+
+    dialog {
+        width: 90%;
+        height: 80%;
+        max-width: 700px;
+        border: .5px solid lightgrey;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+        border-radius: 0.5em;
+        position: relative;
+        scrollbar-width: thin;
+    }
+
+    dialog::backdrop {
+        background: black;
+        opacity: .25;
+    }
+
+    .modal-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        font-size: 3rem;
+        position: fixed;
+        width: 90%;
+        max-width: 700px;
+        background-color: white;
+        margin-top: -16px;
+        padding-top: 20px;
+    }
+
+    img {
+        width: 100%;
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
+
+    /* button {
+        display: inline-block;
+        padding: 15px 30px;
+        margin-top: 20px;
+        border: none;
+        background-color: tomato;
+        color: whitesmoke;
+        border-radius: 99px;
+    } */
+
+    i {
+        cursor: pointer;
+    }
+
+    i:hover {
+        background-color: lightgrey;
+        border-radius: 2px;
+    }
+</style>
+
+
+<body>
+
+    <div
+        style="background-size: cover; background-repeat: no-repeat; height: 100vh; width: 100%; background-position: center; background-image: url('/static/images/bg.jpg');">
+        {% include 'navbar.html' %}
+        <div style="justify-content: center; justify-content: center; flex-direction: column; padding-bottom: 50px;">
+            <p id="demo" class="text-white text-4xl text-center" style="margin-top: 100px; margin-bottom: 50px;">
+            </p>
+            <dialog class="modal">
+                <!-- <button class="modal-header close-button">
+                    hey
+                </button> -->
+                <form method="post" action="" enctype="multipart/form-data" class=" mt-4">
+                    {% csrf_token %}
+                    {{ form.as_p}}
+                    <div class="form-group mr-auto ml-auto">
+                        <button type="submit" name="tomato" class="btn btn-lg btn-success form-control"><b>Upload</b></button>
+
+                    </div>
+                </form>
+                <button class="close-button">close</button>
+            </dialog>
+
+            <dialog class="modal2">
+                <!-- <button class="modal-header close-button">
+                    hey
+                </button> -->
+                <form method="post" enctype="multipart/form-data" class=" mt-4">
+                    {% csrf_token %}
+                    {{ form.as_p}}
+                    <div class="form-group mr-auto ml-auto">
+                        <button type="submit" class="btn btn-lg btn-success form-control"><b>Upload</b></button>
+
+                    </div>
+                </form>
+                <button class="close-button2">close</button>
+            </dialog>
+
+            <div style="width: 75%; margin: auto; display: block;">
+                <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                    <div class="bg-white-500 rounded-xl hover:shadow-sm p-2"
+                        style="height: 350px; width: 300px; background-color: rgba(250, 250, 250, 0.2);">
+                        <img src="/static/images/tomato.png"
+                            style="width: 50px; height: 50px; object-fit: contain; border-radius: 100px;" alt="" />
+                        <a href="tomato" class="hover:cursor-pointer text-xl">
+
+                            Tomato
+                        </a>
+                        <button class="open-button">O</button>
+
+                        <div class="w-50 border-t border-gray-300 mt-2 mb-2"></div>
+                        <div style="height: 200px;" class="scroll">
+                            <ul>
+                                <li style="background-color: rgba(0,0,0,0.3); margin-top: 5px; margin-bottom: 5px;"
+                                    class="text-white hover:bg-slate-50 hover:cursor-pointer p-2 rounded-md">
+                                    Bacterial Spot
+                                </li>
+                                <li style="background-color: rgba(0,0,0,0.3); margin-top: 5px; margin-bottom: 5px;"
+                                    class="text-white hover:bg-slate-50 hover:cursor-pointer p-2 rounded-md">Early
+                                    Blight
+                                </li>
+                                <li style="background-color: rgba(0,0,0,0.3); margin-top: 5px; margin-bottom: 5px;"
+                                    class="text-white hover:bg-slate-50 hover:cursor-pointer p-2 rounded-md">Curl
+                                </li>
+                                <li style="background-color: rgba(0,0,0,0.3); margin-top: 5px; margin-bottom: 5px;"
+                                    class="text-white hover:bg-slate-50 hover:cursor-pointer p-2 rounded-md">Early
+                                    Healthy crop
+                                </li>
+                                <li style="background-color: rgba(0,0,0,0.3); margin-top: 5px; margin-bottom: 5px;"
+                                    class="text-white hover:bg-slate-50 hover:cursor-pointer p-2 rounded-md">Leaf Mold
+                                </li>
+                                <li style="background-color: rgba(0,0,0,0.3); margin-top: 5px; margin-bottom: 5px;"
+                                    class="text-white hover:bg-slate-50 hover:cursor-pointer p-2 rounded-md">Early
+                                    Spider mite
+                                </li>
+                                <li style="background-color: rgba(0,0,0,0.3); margin-top: 5px; margin-bottom: 5px;"
+                                    class="text-white hover:bg-slate-50 hover:cursor-pointer p-2 rounded-md">Early
+                                    Sepetoria leaf spot
+                                </li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+                    <div class="bg-white-500 rounded-xl hover:shadow-sm p-2"
+                        style="height: 350px; width: 300px; background-color: rgba(250, 250, 250, 0.2);">
+                        <img src="/static/images/potato.png"
+                            style="width: 50px; height: 50px; object-fit: contain; border-radius: 100px;" alt="" />
+                        <a href="tomato" class="hover:cursor-pointer text-xl">
+
+                            Potato
+                        </a>
+                        <button class="open-button2">O</button>
+                        <div class="w-50 border-t border-gray-300 mt-2 mb-2"></div>
+                        <div style="height: 150px;" class="scroll">
+                            <ul>
+                                <li style="background-color: rgba(0,0,0,0.3); margin-top: 5px; margin-bottom: 5px;"
+                                    class="text-white hover:bg-slate-50 hover:cursor-pointer p-2 rounded-md">
+                                    Healthy
+                                </li>
+
+
+                                <li style="background-color: rgba(0,0,0,0.3); margin-top: 5px; margin-bottom: 5px;"
+                                    class="text-white hover:bg-slate-50 hover:cursor-pointer p-2 rounded-md">Early
+                                    Late Blight
+                                </li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+                    <div class="bg-white-500 rounded-xl hover:shadow-sm p-2"
+                        style="height: 350px; width: 300px; background-color: rgba(250, 250, 250, 0.2);">
+                        <img src="/static/images/pepper.png"
+                            style="width: 50px; height: 50px; object-fit: contain; border-radius: 100px;" alt="" />
+                        <a href="tomato" class="bg-green-50 rounded-lg p-1 hover:cursor-pointer text-xl">
+
+                            Pepper
+                        </a>
+                        <div class="w-50 border-t border-gray-300 mt-2 mb-2"></div>
+                        <div style="height: 150px;" class="scroll">
+                            <ul>
+                                <li style="background-color: rgba(0,0,0,0.3); margin-top: 5px; margin-bottom: 5px;"
+                                    class="text-white hover:bg-slate-50 hover:cursor-pointer p-2 rounded-md">
+                                    Bacterial Spot
+                                </li>
+                                <li style="background-color: rgba(0,0,0,0.3); margin-top: 5px; margin-bottom: 5px;"
+                                    class="text-white hover:bg-slate-50 hover:cursor-pointer p-2 rounded-md">Early
+                                    Healthy
+                                </li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <script>
+        var i = 0;
+        var txt = 'Find crop diseases'; /* The text */
+        var speed = 50; /* The speed/duration of the effect in milliseconds */
+
+        function typeWriter() {
+            if (i < txt.length) {
+                document.getElementById("demo").innerHTML += txt.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+
+            }
+        }
+
+        typeWriter()
+
+        // Result Skip Results Iframe
+        const modal = document.querySelector('.modal');
+        const openModal = document.querySelector('.open-button');
+        const closeModal = document.querySelector('.close-button');
+
+        openModal.addEventListener('click', () => {
+            modal.showModal();
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.close();
+        });
+
+        // Result Skip Results Iframe
+        const modal2 = document.querySelector('.modal2');
+        const openModal2 = document.querySelector('.open-button2');
+        const closeModal2 = document.querySelector('.close-button2');
+
+        openModal2.addEventListener('click', () => {
+            modal2.showModal();
+        });
+
+        closeModal2.addEventListener('click', () => {
+            modal2.close();
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+
+    <div style="width: 55%; display: block; margin: auto;">
+        <div class="text-3xl pt-4 pb-4 font-bold">
+            Results
+        </div>
+        <div style="display: flex; justify-content: center; padding: 10px;" class="border-2 rounded-lg">
+
+            <div class="grid grid-cols-1 divide-y-[2px]">
+                {% for i in img %}
+                <img src="media/{{i.image}}" class="rounded" alt="" style="width: 250px; height: 250px; object-fit: contain;">
+
+                {% endfor %}
+
+                <div class="text-xl pt-4 pb-4">
+                    Disease - 
+                    {{classname}}
+                </div>
+                <div>
+                    Description
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
